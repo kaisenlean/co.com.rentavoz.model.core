@@ -11,6 +11,8 @@ import javax.ejb.Stateless;
 
 import co.com.rentavoz.logica.jpa.fachadas.VentaFacade;
 
+
+
 /**
  * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
  * @project co.com.rentavoz.model.core
@@ -34,6 +36,6 @@ public class VentaBean implements Serializable {
     @PostConstruct
     public void init() {
 
-        System.out.println(  ventaFacade.count());
+        System.out.println(ventaFacade.count());
     }
 }
