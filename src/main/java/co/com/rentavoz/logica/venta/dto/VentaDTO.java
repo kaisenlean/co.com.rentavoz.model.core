@@ -10,7 +10,7 @@ import co.com.rentavoz.logica.jpa.entidades.Tercero;
 import co.com.rentavoz.logica.jpa.entidades.TipoPago;
 import co.com.rentavoz.logica.jpa.entidades.VentaLinea;
 
-import com.sun.xml.rpc.processor.modeler.j2ee.xml.string;
+
 
 /**
  * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
@@ -21,7 +21,7 @@ import com.sun.xml.rpc.processor.modeler.j2ee.xml.string;
  */
 public class VentaDTO {
 
-	private string numero;
+	private String numero;
 	private Date fecha;
 	private TipoPago tipoPago;
 	private Tercero tercero;
@@ -59,7 +59,7 @@ public class VentaDTO {
 	 * @date 2/06/2013
 	 * @return the numero
 	 */
-	public string getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 	
@@ -113,7 +113,7 @@ public class VentaDTO {
 	 *@date 2/06/2013
 	 * @param numero the numero to set
 	 */
-	public void setNumero(string numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 	
