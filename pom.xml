@@ -30,7 +30,7 @@
             <groupId>co.com.rentavoz</groupId>
             <artifactId>co.com.rentavoz.model.jpa</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax</groupId>

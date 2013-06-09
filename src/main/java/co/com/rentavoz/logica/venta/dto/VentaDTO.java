@@ -3,12 +3,17 @@
  */
 package co.com.rentavoz.logica.venta.dto;
 
-import java.sql.Date;
+import java.math.BigDecimal;
+
 import java.util.ArrayList;
 
+import co.com.rentavoz.logica.jpa.entidades.Pago;
 import co.com.rentavoz.logica.jpa.entidades.Tercero;
 import co.com.rentavoz.logica.jpa.entidades.TipoPago;
+import co.com.rentavoz.logica.jpa.entidades.Venta;
 import co.com.rentavoz.logica.jpa.entidades.VentaLinea;
+import java.util.Date;
+
 
 
 
@@ -23,10 +28,14 @@ public class VentaDTO {
 
 	private String numero;
 	private Date fecha;
-	private TipoPago tipoPago;
-	private Tercero tercero;
-	private ArrayList<VentaLinea> lineas;
+	private TipoPago tipoPago=new TipoPago();
+	private Tercero tercero=new Tercero();
+	private ArrayList<VentaLinea> lineas=new ArrayList<VentaLinea>();
 	private String observacion;
+	private Pago pago=new Pago();
+	private BigDecimal domicilio=new BigDecimal(0);
+	
+	private Venta baseData;
 	
 	/**
 	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
@@ -144,7 +153,60 @@ public class VentaDTO {
 		this.tipoPago = tipoPago;
 	}
 	
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the pago
+	 */
+	public Pago getPago() {
+		return pago;
+	}
 	
- 
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param pago the pago to set
+	 */
+	public void setPago(Pago pago) {
+		this.pago = pago;
+	}
+	
+ /**
+ * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ * @date 2/06/2013
+ * @return the domicilio
+ */
+public BigDecimal getDomicilio() {
+	return domicilio;
+}
+/**
+ *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ *@date 2/06/2013
+ * @param domicilio the domicilio to set
+ */
+public void setDomicilio(BigDecimal domicilio) {
+	this.domicilio = domicilio;
+}
+
+
+
+/**
+ * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ * @date 2/06/2013
+ * @return the baseData
+ */
+public Venta getBaseData() {
+	return baseData;
+}
+
+/**
+ *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+ *@date 2/06/2013
+ * @param baseData the baseData to set
+ */
+public void setBaseData(Venta baseData) {
+	this.baseData = baseData;
+}
+
 
 }
