@@ -28,12 +28,19 @@ public class VentaDTO {
 
 	private String numero;
 	private Date fecha;
-	private TipoPago tipoPago=new TipoPago();
+	private String tipoPago;
 	private Tercero tercero=new Tercero();
 	private ArrayList<VentaLinea> lineas=new ArrayList<VentaLinea>();
 	private String observacion;
 	private Pago pago=new Pago();
 	private BigDecimal domicilio=new BigDecimal(0);
+        private boolean pagoTotal=false;
+        private double valorAbono=0.0;
+        private Date fechaProxPago;
+        private Date fechaPagoCuenta=new Date();
+        private String lugarPago;
+        private boolean pagoConsignacion=false;
+        private String selIdCuenta;
 	
 	private Venta baseData;
 	
@@ -95,7 +102,7 @@ public class VentaDTO {
 	 * @date 2/06/2013
 	 * @return the tipoPago
 	 */
-	public TipoPago getTipoPago() {
+	public String getTipoPago() {
 		return tipoPago;
 	}
 	
@@ -149,7 +156,7 @@ public class VentaDTO {
 	 *@date 2/06/2013
 	 * @param tipoPago the tipoPago to set
 	 */
-	public void setTipoPago(TipoPago tipoPago) {
+	public void setTipoPago(String tipoPago) {
 		this.tipoPago = tipoPago;
 	}
 	
@@ -208,5 +215,67 @@ public void setBaseData(Venta baseData) {
 	this.baseData = baseData;
 }
 
+    public double getValorAbono() {
+        return valorAbono;
+    }
 
+    public boolean isPagoTotal() {
+        return pagoTotal;
+    }
+
+    public void setValorAbono(double valorAbono) {
+        this.valorAbono = valorAbono;
+    }
+
+    public void setPagoTotal(boolean pagoTotal) {
+        this.pagoTotal = pagoTotal;
+    }
+
+    public Date getFechaProxPago() {
+        return fechaProxPago;
+    }
+
+    public void setFechaProxPago(Date fechaProxPago) {
+        this.fechaProxPago = fechaProxPago;
+    }
+
+    public Date getFechaPagoCuenta() {
+        return fechaPagoCuenta;
+    }
+
+    public void setFechaPagoCuenta(Date fechaPagoCuenta) {
+        this.fechaPagoCuenta = fechaPagoCuenta;
+    }
+
+    public String getLugarPago() {
+        return lugarPago;
+    }
+
+    public void setLugarPago(String lugarPago) {
+        this.lugarPago = lugarPago;
+    }
+
+    public void setPagoConsignacion(boolean pagoConsignacion) {
+        this.pagoConsignacion = pagoConsignacion;
+    }
+
+    
+    
+    
+    public boolean isPagoConsignacion() {
+        return pagoConsignacion;
+    }
+
+    public String getSelIdCuenta() {
+        return selIdCuenta;
+    }
+
+    public void setSelIdCuenta(String selIdCuenta) {
+        this.selIdCuenta = selIdCuenta;
+    }
+
+
+    
+    
+    
 }
