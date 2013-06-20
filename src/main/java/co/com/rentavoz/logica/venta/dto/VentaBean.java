@@ -19,8 +19,6 @@ import co.com.rentavoz.logica.jpa.entidades.VentaLinea;
 import co.com.rentavoz.logica.jpa.fachadas.CuentasFacade;
 import co.com.rentavoz.logica.jpa.fachadas.TipoPagoFacade;
 import co.com.rentavoz.logica.jpa.fachadas.VentaFacade;
-import co.com.rentavoz.logica.venta.VentaLocal;
-import co.com.rentavoz.logica.venta.VentaRemote;
 
 /**
  * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
@@ -44,19 +42,21 @@ public class VentaBean implements Serializable {
     private CuentasFacade cuentasFacade;
 
     /**
-     *
+     * 
+    * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+    * @date 19/06/2013
      */
     @PostConstruct
     public void init() {
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * co.com.rentavoz.logica.venta.VentaLocal#registrarVenta(co.com.rentavoz
-     * .logica.venta.dto.VentaDTO)
-     */
+   /**
+    * s
+   * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+   * @date 19/06/2013
+   * @param dto
+   * @return
+    */
     public VentaDTO registrarVenta(VentaDTO dto) {
         ArrayList<Pago> pagos = new ArrayList<Pago>();
         ArrayList<TerceroVenta> tercerosDeVenta = new ArrayList<TerceroVenta>();

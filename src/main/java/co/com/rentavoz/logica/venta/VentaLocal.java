@@ -3,8 +3,6 @@
  */
 package co.com.rentavoz.logica.venta;
 
-import javax.ejb.Local;
-
 import co.com.rentavoz.logica.venta.dto.VentaDTO;
 
 /**

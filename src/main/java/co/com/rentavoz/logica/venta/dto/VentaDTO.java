@@ -4,15 +4,13 @@
 package co.com.rentavoz.logica.venta.dto;
 
 import java.math.BigDecimal;
-
 import java.util.ArrayList;
+import java.util.Date;
 
 import co.com.rentavoz.logica.jpa.entidades.Pago;
 import co.com.rentavoz.logica.jpa.entidades.Tercero;
-import co.com.rentavoz.logica.jpa.entidades.TipoPago;
 import co.com.rentavoz.logica.jpa.entidades.Venta;
 import co.com.rentavoz.logica.jpa.entidades.VentaLinea;
-import java.util.Date;
 
 
 
