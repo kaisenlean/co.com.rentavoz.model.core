@@ -25,106 +25,107 @@ import co.com.rentavoz.logica.jpa.fachadas.VentaFacade;
  * @project co.com.rentavoz.model.core
  * @class VentaBean
  * @date 2/06/2013
- *
+ * 
  */
 @Stateless
 public class VentaBean implements Serializable {
 
-    /**
+	/**
      *
      */
-    private static final long serialVersionUID = 1L;
-    @EJB
-    private VentaFacade ventaFacade;
-    @EJB
-    private TipoPagoFacade tipoPagoFacade;
-    @EJB
-    private CuentasFacade cuentasFacade;
+	private static final long serialVersionUID = 1L;
+	@EJB
+	private VentaFacade ventaFacade;
+	@EJB
+	private TipoPagoFacade tipoPagoFacade;
+	@EJB
+	private CuentasFacade cuentasFacade;
 
-    /**
-     * 
-    * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-    * @date 19/06/2013
-     */
-    @PostConstruct
-    public void init() {
-    }
+	/**
+	 * 
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 19/06/2013
+	 */
+	@PostConstruct
+	public void init() {
+	}
 
-   /**
-    * s
-   * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-   * @date 19/06/2013
-   * @param dto
-   * @return
-    */
-    public VentaDTO registrarVenta(VentaDTO dto) {
-        ArrayList<Pago> pagos = new ArrayList<Pago>();
-        ArrayList<TerceroVenta> tercerosDeVenta = new ArrayList<TerceroVenta>();
+	/**
+	 *  
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 19/06/2013
+	 * @param dto
+	 * @return
+	 */
+	public VentaDTO registrarVenta(VentaDTO dto) {
+		ArrayList<Pago> pagos = new ArrayList<Pago>();
+		ArrayList<TerceroVenta> tercerosDeVenta = new ArrayList<TerceroVenta>();
 
-        Venta venta = new Venta();
-        venta.setIdVenta(ventaFacade.findSgteNumero());
-        venta.setFecha(new Date());
-        venta.setVenFecha(dto.getFecha());
-        venta.setObservacion(dto.getObservacion());
+		Venta venta = new Venta();
+		venta.setIdVenta(ventaFacade.findSgteNumero());
+		venta.setFecha(new Date());
+		venta.setVenFecha(dto.getFecha());
+		venta.setObservacion(dto.getObservacion());
 
-        /* Bigdecimal para guardar el saldo la suma de las linesas */
-        double saldo = 0.0;
+		/* Bigdecimal para guardar el saldo la suma de las linesas */
+		double saldo = 0.0;
 
-        /*asignamos el valor del domicilio a la venta asi sea 0.0*/
-        saldo += (dto.getDomicilio().doubleValue());
+		/* asignamos el valor del domicilio a la venta asi sea 0.0 */
+		saldo += (dto.getDomicilio().doubleValue());
 
-        int pos = 0;
-        /* recorremos lineas para calcular saldo a pagar */
-        for (VentaLinea vlTemp : dto.getLineas()) {
-            // suma el precio de la linea al total
-            saldo += (vlTemp.getVentLinPrecio().doubleValue());
-            // suma el deposito
-            saldo += (vlTemp.getVentLinDeposito().doubleValue());
-            vlTemp.setVentaidVenta(venta);
-            dto.getLineas().set(pos, vlTemp);
-            pos++;
-        }
-        // asignamos las ventaslineas a la venta
-        venta.setVentaLineaList(dto.getLineas());
+		int pos = 0;
+		/* recorremos lineas para calcular saldo a pagar */
+		for (VentaLinea vlTemp : dto.getLineas()) {
+			// suma el precio de la linea al total
+			saldo += (vlTemp.getVentLinPrecio().doubleValue());
+			// suma el deposito
+			saldo += (vlTemp.getVentLinDeposito().doubleValue());
+			vlTemp.setVentaidVenta(venta);
+			dto.getLineas().set(pos, vlTemp);
+			pos++;
+		}
+		// asignamos las ventaslineas a la venta
+		venta.setVentaLineaList(dto.getLineas());
 
+		/* adicionamos los terceros a la venta(generalmente siempre sera 1) */
+		tercerosDeVenta.add(new TerceroVenta(dto.getTercero(), venta));
+		venta.setTerceroVentaList(tercerosDeVenta);
 
-        /*adicionamos los terceros a la venta(generalmente siempre sera 1)*/
-        tercerosDeVenta.add(new TerceroVenta(dto.getTercero(), venta));
-        venta.setTerceroVentaList(tercerosDeVenta);
+		Pago pagoTemp = new Pago();
+		pagoTemp.setCuentasidCuentas(null);
+		pagoTemp.setFecha(new Date());
+		pagoTemp.setPagFechaProx(new Date());
+		pagoTemp.setPagValor(BigDecimal.valueOf(saldo));
+		pagoTemp.setVentaidVenta(venta);
+		pagoTemp.setTipoPagoidTipoPago(tipoPagoFacade.find(Integer.parseInt(dto
+				.getTipoPago())));
+		if (dto.isPagoTotal()) {
+			pagoTemp.setPagFechaProx(dto.getFechaProxPago());
+		}
+		if (dto.isPagoConsignacion()) {
 
-        Pago pagoTemp = new Pago();
-        pagoTemp.setCuentasidCuentas(null);
-        pagoTemp.setFecha(new Date());
-        pagoTemp.setPagFechaProx(new Date());
-        pagoTemp.setPagValor(BigDecimal.valueOf(saldo));
-        pagoTemp.setVentaidVenta(venta);
-        pagoTemp.setTipoPagoidTipoPago(tipoPagoFacade.find(Integer.parseInt(dto.getTipoPago())));
-        if (dto.isPagoTotal()) {
-            pagoTemp.setPagFechaProx(dto.getFechaProxPago());
-        }
-        if (dto.isPagoConsignacion()) {
+			pagoTemp.setCuentasidCuentas(cuentasFacade.find(dto
+					.getSelIdCuenta()));
 
-            pagoTemp.setCuentasidCuentas(cuentasFacade.find(dto.getSelIdCuenta()));
+		}
+		dto.setPago(pagoTemp);
+		/* adicionamos los pagos a la venta */
+		pagos.add(dto.getPago());
+		venta.setPagoList(pagos);
 
-        }
-        dto.setPago(pagoTemp);
-        /*adicionamos los pagos  a la venta*/
-        pagos.add(dto.getPago());
-        venta.setPagoList(pagos);
+		venta.setVenDomicilio(dto.getDomicilio());
+		venta.setVenSaldo(BigDecimal.valueOf(saldo));
 
-        venta.setVenDomicilio(dto.getDomicilio());
-        venta.setVenSaldo(BigDecimal.valueOf(saldo));
+		/* registramos la venta en la bd */
+		try {
 
-        /*registramos la venta en la bd*/
-        try {
+			ventaFacade.create(venta);
 
-            ventaFacade.create(venta);
+		} catch (Exception e) {
+			System.err.println(e.toString());
+		}
 
-        } catch (Exception e) {
-            System.err.println(e.toString());
-        }
-
-        dto.setBaseData(venta);
-        return dto;
-    }
+		dto.setBaseData(venta);
+		return dto;
+	}
 }

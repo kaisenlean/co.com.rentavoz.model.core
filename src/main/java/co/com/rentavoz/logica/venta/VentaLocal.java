@@ -10,9 +10,9 @@ import co.com.rentavoz.logica.venta.dto.VentaDTO;
  * @project co.com.rentavoz.model.core
  * @class VentaLocal
  * @date 2/06/2013
- *
+ * 
  */
-//@Local
+// @Local
 public interface VentaLocal {
- VentaDTO registrarVenta(VentaDTO dto);
+	VentaDTO registrarVenta(VentaDTO dto);
 }

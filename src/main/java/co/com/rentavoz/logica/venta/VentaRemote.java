@@ -12,7 +12,7 @@ import co.com.rentavoz.logica.venta.dto.VentaDTO;
  * @project co.com.rentavoz.model.core
  * @class VentaRemote
  * @date 2/06/2013
- *
+ * 
  */
 @Remote
 public interface VentaRemote {

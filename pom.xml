@@ -21,7 +21,8 @@
                     <ejbVersion>3.0</ejbVersion>
                 </configuration>
             </plugin>
-         
+
+           
         </plugins>
     </build>
     <dependencies>
