@@ -36,6 +36,7 @@ public class VentaDTO {
 	private String lugarPago;
 	private boolean pagoConsignacion = false;
 	private String selIdCuenta;
+	
 
 	private Venta baseData;
 
