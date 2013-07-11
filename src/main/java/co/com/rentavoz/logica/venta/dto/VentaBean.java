@@ -10,7 +10,6 @@ import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 
 import co.com.rentavoz.logica.jpa.entidades.Pago;
@@ -28,10 +27,12 @@ import co.com.rentavoz.logica.jpa.fachadas.VentaFacade;
  * @date 2/06/2013
  * 
  */
-@Singleton
+@Stateless
 public class VentaBean implements Serializable {
 
-	
+	/**
+     *
+     */
 	private static final long serialVersionUID = 1L;
 	@EJB
 	private VentaFacade ventaFacade;
