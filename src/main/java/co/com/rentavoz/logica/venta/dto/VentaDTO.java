@@ -6,11 +6,14 @@ package co.com.rentavoz.logica.venta.dto;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import co.com.rentavoz.logica.jpa.entidades.Linea;
 import co.com.rentavoz.logica.jpa.entidades.Pago;
 import co.com.rentavoz.logica.jpa.entidades.Tercero;
-import co.com.rentavoz.logica.jpa.entidades.Venta;
-import co.com.rentavoz.logica.jpa.entidades.VentaLinea;
+import co.com.rentavoz.logica.jpa.entidades.almacen.Cuota;
+import co.com.rentavoz.logica.jpa.entidades.almacen.Venta;
+import co.com.rentavoz.logica.jpa.entidades.almacen.VentaLinea;
 
 /**
  * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
@@ -31,11 +34,16 @@ public class VentaDTO {
 	private BigDecimal domicilio = new BigDecimal(0);
 	private boolean pagoTotal = false;
 	private double valorAbono = 0.0;
+	private double valorTotal;
+	private double descuento;
 	private Date fechaProxPago;
 	private Date fechaPagoCuenta = new Date();
 	private String lugarPago;
 	private boolean pagoConsignacion = false;
 	private String selIdCuenta;
+	/*se crea este field para validar la existencia de este campo para un solo registro*/
+	private Linea lineaTemp;
+	private List<Cuota> cuotas= new ArrayList<Cuota>();
 	
 
 	private Venta baseData;
@@ -352,5 +360,80 @@ public class VentaDTO {
 	public void setSelIdCuenta(String selIdCuenta) {
 		this.selIdCuenta = selIdCuenta;
 	}
+
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the lineaTemp
+	 */
+	public Linea getLineaTemp() {
+		return lineaTemp;
+	}
+
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param lineaTemp the lineaTemp to set
+	 */
+	public void setLineaTemp(Linea lineaTemp) {
+		this.lineaTemp = lineaTemp;
+	}
+
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the descuento
+	 */
+	public double getDescuento() {
+		return descuento;
+	}
+
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param descuento the descuento to set
+	 */
+	public void setDescuento(double descuento) {
+		this.descuento = descuento;
+	}
+
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the valorTotal
+	 */
+	public double getValorTotal() {
+		return valorTotal;
+	}
+
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param valorTotal the valorTotal to set
+	 */
+	public void setValorTotal(double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
+	/**
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @return the cuotas
+	 */
+	public List<Cuota> getCuotas() {
+		return cuotas;
+	}
+
+	/**
+	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 *@date 2/06/2013
+	 * @param cuotas the cuotas to set
+	 */
+	public void setCuotas(List<Cuota> cuotas) {
+		this.cuotas = cuotas;
+	}
+	
+	
+	
 
 }
