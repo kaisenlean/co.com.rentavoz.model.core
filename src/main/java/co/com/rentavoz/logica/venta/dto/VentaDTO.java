@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import co.com.rentavoz.logica.jpa.entidades.Linea;
 import co.com.rentavoz.logica.jpa.entidades.Pago;
 import co.com.rentavoz.logica.jpa.entidades.Tercero;
 import co.com.rentavoz.logica.jpa.entidades.almacen.Cuota;
+import co.com.rentavoz.logica.jpa.entidades.almacen.Linea;
 import co.com.rentavoz.logica.jpa.entidades.almacen.Venta;
 import co.com.rentavoz.logica.jpa.entidades.almacen.VentaLinea;
 

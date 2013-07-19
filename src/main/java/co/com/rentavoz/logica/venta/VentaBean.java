@@ -14,7 +14,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 
-import co.com.rentavoz.logica.jpa.entidades.Pago;
 import co.com.rentavoz.logica.jpa.entidades.TerceroVenta;
 import co.com.rentavoz.logica.jpa.entidades.almacen.Cuota;
 import co.com.rentavoz.logica.jpa.entidades.almacen.EstadoCuotaEnum;
@@ -64,7 +63,7 @@ public class VentaBean implements Serializable {
 	 * @return
 	 */
 	public VentaDTO registrarVenta(VentaDTO dto) {
-		ArrayList<Pago> pagos = new ArrayList<Pago>();
+		
 		ArrayList<TerceroVenta> tercerosDeVenta = new ArrayList<TerceroVenta>();
 
 		Venta venta = new Venta();
