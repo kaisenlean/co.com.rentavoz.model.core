@@ -26,6 +26,7 @@ public class TestVentaBean {
 	/**
 	 * Test method for {@link co.com.rentavoz.logica.venta.VentaBean#registrarVenta(co.com.rentavoz.logica.venta.dto.VentaDTO)}.
 	 */
+	@SuppressWarnings("deprecation")
 	@Test
 	public void calcularFechaCorte() {
 		System.out.println(ventaBean);
