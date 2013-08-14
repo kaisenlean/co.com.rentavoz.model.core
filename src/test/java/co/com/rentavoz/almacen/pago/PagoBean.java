@@ -8,7 +8,7 @@ package co.com.rentavoz.almacen.pago;
  * @project co.com.rentavoz.model.core
  * @class PagoBean
  * @date 24/06/2013
- *
+ * 
  */
 public class PagoBean {
 

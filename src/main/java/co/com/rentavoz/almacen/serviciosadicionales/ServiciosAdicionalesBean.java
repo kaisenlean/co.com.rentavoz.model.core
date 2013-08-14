@@ -8,7 +8,7 @@ package co.com.rentavoz.almacen.serviciosadicionales;
  * @project co.com.rentavoz.model.core
  * @class ServiciosAdicionalesBean
  * @date 24/06/2013
- *
+ * 
  */
 public class ServiciosAdicionalesBean {
 

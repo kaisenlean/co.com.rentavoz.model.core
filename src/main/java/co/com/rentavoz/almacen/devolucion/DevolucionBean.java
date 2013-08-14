@@ -8,7 +8,7 @@ package co.com.rentavoz.almacen.devolucion;
  * @project co.com.rentavoz.model.core
  * @class DevolucionBean
  * @date 24/06/2013
- *
+ * 
  */
 public class DevolucionBean {
 

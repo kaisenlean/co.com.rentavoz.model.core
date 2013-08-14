@@ -25,9 +25,9 @@ import co.com.rentavoz.logica.jpa.entidades.almacen.VentaLinea;
 public class VentaDTO {
 
 	private String numero;
-	private Date fecha;
+	private Date fecha=new Date();
 	private String tipoPago;
-	private Tercero tercero = new Tercero();
+	private Tercero tercero ;
 	private ArrayList<VentaLinea> lineas = new ArrayList<VentaLinea>();
 	private String observacion;
 	private Pago pago = new Pago();
@@ -41,10 +41,12 @@ public class VentaDTO {
 	private String lugarPago;
 	private boolean pagoConsignacion = false;
 	private String selIdCuenta;
-	/*se crea este field para validar la existencia de este campo para un solo registro*/
+	/*
+	 * se crea este field para validar la existencia de este campo para un solo
+	 * registro
+	 */
 	private Linea lineaTemp;
-	private List<Cuota> cuotas= new ArrayList<Cuota>();
-	
+	private List<Cuota> cuotas = new ArrayList<Cuota>();
 
 	private Venta baseData;
 
@@ -53,7 +55,6 @@ public class VentaDTO {
 	 * @date 2/06/2013
 	 */
 	public VentaDTO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -371,9 +372,10 @@ public class VentaDTO {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param lineaTemp the lineaTemp to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param lineaTemp
+	 *            the lineaTemp to set
 	 */
 	public void setLineaTemp(Linea lineaTemp) {
 		this.lineaTemp = lineaTemp;
@@ -389,9 +391,10 @@ public class VentaDTO {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param descuento the descuento to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param descuento
+	 *            the descuento to set
 	 */
 	public void setDescuento(double descuento) {
 		this.descuento = descuento;
@@ -407,9 +410,10 @@ public class VentaDTO {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param valorTotal the valorTotal to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param valorTotal
+	 *            the valorTotal to set
 	 */
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
@@ -425,15 +429,13 @@ public class VentaDTO {
 	}
 
 	/**
-	 *@author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
-	 *@date 2/06/2013
-	 * @param cuotas the cuotas to set
+	 * @author <a href="mailto:elmerdiazlazo@gmail.com">Elmer Jose Diaz Lazo</a>
+	 * @date 2/06/2013
+	 * @param cuotas
+	 *            the cuotas to set
 	 */
 	public void setCuotas(List<Cuota> cuotas) {
 		this.cuotas = cuotas;
 	}
-	
-	
-	
 
 }
